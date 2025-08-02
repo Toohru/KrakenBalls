@@ -2,13 +2,37 @@ import { StyleSheet, Dimensions, Platform } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
 
-export default StyleSheet.create({
+// Base styles that don't depend on theme
+export const baseStyles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  // Add other base styles here
+});
+
+// Default export for legacy compatibility
+const defaultStyles = {
+  pageWrapper: {
+    flex: 1,
+    backgroundColor: '#fff',
+    padding: 16,
+  },
+};
+export default defaultStyles;
+
+// Theme-aware styles
+export const createStyles = (theme) => StyleSheet.create({
     // Existing styles
     // Page & Layout
+    container: {
+        flex: 1,
+        backgroundColor: theme.background,
+        padding: 16,
+    },
     pageWrapper: {
         flex: 1,
         padding: 0,
-        backgroundColor: '#0a0a0a',
+        backgroundColor: theme.background,
     },
     
     // Plan Name Input
@@ -18,46 +42,78 @@ export default StyleSheet.create({
         marginTop: 8,
     },
     planNameInput: {
-        backgroundColor: 'rgba(255, 255, 255, 0.05)',
+        backgroundColor: theme.card,
         borderRadius: 12,
         padding: 16,
-        color: '#fff',
+        color: theme.text,
         fontSize: 18,
         fontWeight: '600',
         textAlign: 'center',
+        borderWidth: 1,
+        borderColor: theme.border,
     },
     
-    // Header Actions
-    headerActions: {
+    // Save Button Container
+    saveButtonContainer: {
+        width: '100%',
+        alignItems: 'center',
+        marginTop: 10,
+        marginBottom: 10,
+    },
+    // Save Button Bar
+    saveButtonBar: {
         flexDirection: 'row',
-        justifyContent: 'flex-end',
-        marginBottom: 16,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: theme.primary,
+        paddingVertical: 14,
+        paddingHorizontal: 20,
+        width: '80%',
+        borderRadius: 25,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
+        elevation: 3,
+    },
+    saveButtonBarText: {
+        color: theme.card,
+        fontWeight: '600',
+        fontSize: 16,
+        marginLeft: 10,
     },
     headerButton: {
         width: 40,
         height: 40,
         borderRadius: 20,
-        backgroundColor: 'rgba(255, 255, 255, 0.05)',
+        backgroundColor: theme.card,
         justifyContent: 'center',
         alignItems: 'center',
+        borderWidth: 1,
+        borderColor: theme.border,
     },
     
     // Typography
     title: {
         fontSize: 28,
         fontWeight: '700',
-        color: '#fff',
+        color: theme.text,
         marginBottom: 4,
         letterSpacing: -0.5,
     },
     subtitle: {
         fontSize: 14,
-        color: '#888',
+        color: theme.text + '80',
         marginBottom: 8,
+    },
+    text: {
+        color: theme.text,
+        fontSize: 16,
     },
     contentContainer: {
         flex: 1,
         padding: 16,
+        backgroundColor: theme.background,
     },
     
     // Exercise List
@@ -113,6 +169,102 @@ export default StyleSheet.create({
         alignItems: 'center',
     },
     
+    // FAB (Floating Action Button)
+    fab: {
+        position: 'absolute',
+        bottom: 30,
+        right: 30,
+        width: 60,
+        height: 60,
+        borderRadius: 30,
+        backgroundColor: theme.primary,
+        justifyContent: 'center',
+        alignItems: 'center',
+        elevation: 5,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 3,
+    },
+    
+    // Empty State
+    emptyStateContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 20,
+        marginTop: 60,
+    },
+    emptyCircle: {
+        width: 80,
+        height: 80,
+        borderRadius: 40,
+        backgroundColor: theme.primary + '20',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: 20,
+    },
+    emptyStateText: {
+        color: theme.text + '80',
+        textAlign: 'center',
+        fontSize: 16,
+        lineHeight: 24,
+        marginTop: 10,
+    },
+    emptyStateHighlight: {
+        color: theme.primary,
+        fontWeight: '600',
+    },
+    exerciseInfo: {
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+        flex: 1,
+    },
+    exerciseName: {
+        fontSize: 16,
+        fontWeight: '600',
+        color: theme.text,
+        flex: 1,
+        marginRight: 12,
+        flexWrap: 'wrap',
+    },
+    exerciseDescription: {
+        fontSize: 13,
+        color: theme.text + '80',
+        marginTop: 4,
+        flex: 1,
+    },
+    exerciseTypeContainer: {
+        marginLeft: 'auto',
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    
+    // FAB (Floating Action Button) - Secondary
+    fab: {
+        position: 'absolute',
+        left: 20,
+        bottom: 20,
+        width: 56,
+        height: 56,
+        borderRadius: 28,
+        backgroundColor: theme.primary,
+        justifyContent: 'center',
+        alignItems: 'center',
+        elevation: 4,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
+        zIndex: 10,
+    },
+    fabContent: {
+        width: '100%',
+        height: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    
     // Buttons
     addButton: {
         flexDirection: 'row',
@@ -125,7 +277,7 @@ export default StyleSheet.create({
         marginBottom: 16,
     },
     addButtonText: {
-        color: '#fff',
+        color: theme.card,
         fontSize: 16,
     },
 
@@ -227,6 +379,21 @@ export default StyleSheet.create({
     },
     
     // Exercise Card
+    // Counter styles
+    counterContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 4,
+    },
+    counterIcon: {
+        marginRight: 6,
+    },
+    counterText: {
+        fontSize: 14,
+        color: '#4a90e2',
+        fontWeight: '500',
+    },
+    
     exerciseCard: {
         backgroundColor: '#1a1a1a',
         borderRadius: 16,
@@ -335,7 +502,7 @@ export default StyleSheet.create({
         letterSpacing: 0.5,
     },
     detailValue: {
-        color: '#fff',
+        color: theme.text,
         fontSize: 16,
         fontWeight: '600',
     },
@@ -541,7 +708,7 @@ export default StyleSheet.create({
     },
     searchInput: {
         flex: 1,
-        color: '#fff',
+        color: theme.text,
         fontSize: 16,
         paddingVertical: 8,
         paddingLeft: 10,
@@ -743,6 +910,185 @@ export default StyleSheet.create({
         padding: 16,
         height: 52,
     },
+    // Program Card Styles
+    card: {
+        backgroundColor: theme.card,
+        borderRadius: 12,
+        padding: 16,
+        marginBottom: 12,
+        borderWidth: 1,
+        borderColor: theme.border,
+        marginHorizontal: 16,
+        borderLeftWidth: 4,
+        borderLeftColor: 'transparent',
+    },
+    cardTitle: {
+        fontSize: 18,
+        fontWeight: '600',
+        color: '#fff',
+        marginBottom: 4,
+    },
+    cardSubtitle: {
+        fontSize: 14,
+        color: '#888',
+        marginBottom: 8,
+    },
+    cardDescription: {
+        fontSize: 14,
+        color: '#aaa',
+        lineHeight: 20,
+    },
+    statusButton: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        padding: 4,
+    },
+    statusIndicator: {
+        width: 12,
+        height: 12,
+        borderRadius: 6,
+        marginRight: 6,
+    },
+    statusText: {
+        fontSize: 14,
+        color: '#fff',
+        fontWeight: '500',
+    },
+    // Program Form Styles
+    formGroup: {
+        marginBottom: 20,
+        paddingHorizontal: 16,
+    },
+    label: {
+        color: '#fff',
+        fontSize: 16,
+        fontWeight: '600',
+        marginBottom: 8,
+    },
+    input: {
+        backgroundColor: 'rgba(255, 255, 255, 0.05)', 
+        borderRadius: 8,
+        padding: 12,
+        color: '#fff',
+        fontSize: 16,
+    },
+    durationContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    durationInputContainer: {
+        width: '48%',
+    },
+    durationLabel: {
+        color: '#888',
+        marginBottom: 8,
+    },
+    durationInput: {
+        textAlign: 'center',
+    },
+    // Day Card Styles
+    dayCard: {
+        backgroundColor: 'rgba(255, 255, 255, 0.03)',
+        borderRadius: 8,
+        padding: 12,
+        marginBottom: 12,
+    },
+    dayHeader: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: 8,
+    },
+    dayTitle: {
+        color: '#fff',
+        fontWeight: '600',
+        fontSize: 16,
+    },
+    dayActions: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    restDayButton: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        padding: 4,
+    },
+    restDayText: {
+        marginLeft: 4,
+        fontSize: 14,
+    },
+    planButton: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        backgroundColor: 'rgba(74, 144, 226, 0.1)',
+        padding: 12,
+        borderRadius: 8,
+    },
+    planButtonText: {
+        color: '#4a90e2',
+        fontSize: 14,
+    },
+    // Plan Selection Modal
+    modalOverlay: {
+        flex: 1,
+        backgroundColor: 'rgba(0, 0, 0, 0.7)',
+        justifyContent: 'flex-end',
+    },
+    modalContent: {
+        backgroundColor: '#1a1a1a',
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+        maxHeight: '80%',
+        padding: 20,
+    },
+    modalHeader: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: 16,
+    },
+    modalTitle: {
+        color: '#fff',
+        fontSize: 18,
+        fontWeight: '600',
+    },
+    closeButton: {
+        padding: 8,
+    },
+    planItem: {
+        padding: 16,
+        borderBottomWidth: 1,
+        borderBottomColor: 'rgba(255, 255, 255, 0.05)',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
+    planItemName: {
+        color: '#fff',
+        fontSize: 16,
+    },
+    // Save button styles to match the app's design
+    saveButton: {
+        backgroundColor: '#4a90e2',
+        marginHorizontal: 16,
+        marginBottom: 20,
+        paddingVertical: 16,
+        borderRadius: 12,
+        alignItems: 'center',
+        justifyContent: 'center',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
+        elevation: 3,
+    },
+    saveButtonText: {
+        color: '#fff',
+        fontSize: 16,
+        fontWeight: '700',
+        letterSpacing: 0.5,
+    },
     sectionDivider: {
         height: 1,
         backgroundColor: 'rgba(255, 255, 255, 0.05)',
@@ -782,6 +1128,7 @@ export default StyleSheet.create({
         maxWidth: 300,
         height: 52, // Fixed height for the button
         borderRadius: 14,
+        backgroundColor: theme.primary,
         overflow: 'hidden',
     },
     saveButtonDisabled: {
@@ -887,7 +1234,7 @@ export default StyleSheet.create({
     },
     // Primary button
     primaryButton: {
-        backgroundColor: '#4a90e2',
+        backgroundColor: theme.primary,
         borderRadius: 14,
         paddingVertical: 18,
         paddingHorizontal: 24,
