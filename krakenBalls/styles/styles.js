@@ -36,12 +36,12 @@ export const createStyles = (theme) => StyleSheet.create({
     },
     
     // Plan Name Input
-    planNameContainer: {
+    NameContainer: {
         marginBottom: 16,
         paddingHorizontal: 16,
         marginTop: 8,
     },
-    planNameInput: {
+    NameInput: {
         backgroundColor: theme.card,
         borderRadius: 12,
         padding: 16,
@@ -139,7 +139,7 @@ export const createStyles = (theme) => StyleSheet.create({
     
     // Exercise Item
     exerciseItem: {
-        backgroundColor: '#1a1a1a',
+        backgroundColor: theme.card,
         borderRadius: 12,
         padding: 16,
         marginBottom: 12,
@@ -152,7 +152,7 @@ export const createStyles = (theme) => StyleSheet.create({
     exerciseName: {
         fontSize: 16,
         fontWeight: '600',
-        color: '#fff',
+        color: theme.text,
         flex: 1,
         marginRight: 12,
         flexWrap: 'wrap',
@@ -299,7 +299,7 @@ export const createStyles = (theme) => StyleSheet.create({
         flex: 1,
     },
     planName: {
-        color: '#fff',
+        color: theme.text,
         fontSize: 16,
         fontWeight: '600',
         marginBottom: 8,
@@ -342,7 +342,7 @@ export const createStyles = (theme) => StyleSheet.create({
         flex: 1,
     },
     planName: {
-        color: '#fff',
+        color: theme.text,
         fontSize: 16,
         fontWeight: '600',
         marginBottom: 8,
@@ -421,7 +421,7 @@ export const createStyles = (theme) => StyleSheet.create({
         marginRight: 12,
     },
     exerciseName: {
-        color: '#fff',
+        color: theme.text,
         fontSize: 16,
         fontWeight: '600',
         marginBottom: 6,
@@ -477,7 +477,7 @@ export const createStyles = (theme) => StyleSheet.create({
     },
     exerciseName: {
         flex: 1,
-        color: '#fff',
+        color: theme.text,
         fontSize: 16,
         fontWeight: '600',
     },
@@ -545,7 +545,7 @@ export const createStyles = (theme) => StyleSheet.create({
         marginBottom: 12,
     },
     exerciseName: {
-        color: '#fff',
+        color: theme.text,
         fontSize: 17,
         fontWeight: '600',
         flex: 1,
@@ -601,12 +601,12 @@ export const createStyles = (theme) => StyleSheet.create({
         alignItems: 'center',
     },
     buttonText: {
-        color: '#fff',
+        color: theme.text,
         fontSize: 16,
         fontWeight: '600',
     },
     emptyStateTitle: {
-        color: '#fff',
+        color: theme.text,
         fontSize: 18,
         fontWeight: '600',
         marginTop: 16,
@@ -740,7 +740,7 @@ export const createStyles = (theme) => StyleSheet.create({
         alignItems: 'center',
     },
     exerciseListItemName: {
-        color: '#fff',
+        color: theme.text,
         fontSize: 16,
         fontWeight: '500',
         marginRight: 12,
@@ -867,7 +867,7 @@ export const createStyles = (theme) => StyleSheet.create({
         marginRight: 16,
     },
     modalTitle: {
-        color: '#fff',
+        color: theme.text,
         fontSize: 22,
         fontWeight: '700',
         marginBottom: 4,
@@ -905,7 +905,7 @@ export const createStyles = (theme) => StyleSheet.create({
         borderColor: 'rgba(255, 255, 255, 0.08)',
     },
     input: {
-        color: '#fff',
+        color: theme.text,
         fontSize: 16,
         padding: 16,
         height: 52,
@@ -925,7 +925,7 @@ export const createStyles = (theme) => StyleSheet.create({
     cardTitle: {
         fontSize: 18,
         fontWeight: '600',
-        color: '#fff',
+        color: theme.text,
         marginBottom: 4,
     },
     cardSubtitle: {
@@ -951,7 +951,7 @@ export const createStyles = (theme) => StyleSheet.create({
     },
     statusText: {
         fontSize: 14,
-        color: '#fff',
+        color: theme.text,
         fontWeight: '500',
     },
     // Program Form Styles
@@ -960,7 +960,7 @@ export const createStyles = (theme) => StyleSheet.create({
         paddingHorizontal: 16,
     },
     label: {
-        color: '#fff',
+        color: theme.text,
         fontSize: 16,
         fontWeight: '600',
         marginBottom: 8,
@@ -969,7 +969,7 @@ export const createStyles = (theme) => StyleSheet.create({
         backgroundColor: 'rgba(255, 255, 255, 0.05)', 
         borderRadius: 8,
         padding: 12,
-        color: '#fff',
+        color: theme.text,
         fontSize: 16,
     },
     durationContainer: {
@@ -988,7 +988,7 @@ export const createStyles = (theme) => StyleSheet.create({
     },
     // Day Card Styles
     dayCard: {
-        backgroundColor: 'rgba(255, 255, 255, 0.03)',
+        backgroundColor: theme.card,
         borderRadius: 8,
         padding: 12,
         marginBottom: 12,
@@ -1000,7 +1000,7 @@ export const createStyles = (theme) => StyleSheet.create({
         marginBottom: 8,
     },
     dayTitle: {
-        color: '#fff',
+        color: theme.text,
         fontWeight: '600',
         fontSize: 16,
     },
@@ -1019,15 +1019,20 @@ export const createStyles = (theme) => StyleSheet.create({
     },
     planButton: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
         alignItems: 'center',
-        backgroundColor: 'rgba(74, 144, 226, 0.1)',
-        padding: 12,
+        justifyContent: 'space-between',
+        backgroundColor: theme.primary + '20', // 20% opacity
         borderRadius: 8,
+        padding: 12,
+        marginTop: 8,
+        borderWidth: 1,
+        borderColor: theme.primary + '40', // 40% opacity border
     },
     planButtonText: {
-        color: '#4a90e2',
+        color: theme.primary,
         fontSize: 14,
+        fontWeight: '500',
+        flex: 1,
     },
     // Plan Selection Modal
     modalOverlay: {
@@ -1049,7 +1054,7 @@ export const createStyles = (theme) => StyleSheet.create({
         marginBottom: 16,
     },
     modalTitle: {
-        color: '#fff',
+        color: theme.text,
         fontSize: 18,
         fontWeight: '600',
     },
@@ -1065,12 +1070,12 @@ export const createStyles = (theme) => StyleSheet.create({
         alignItems: 'center',
     },
     planItemName: {
-        color: '#fff',
+        color: theme.text,
         fontSize: 16,
     },
     // Save button styles to match the app's design
     saveButton: {
-        backgroundColor: '#4a90e2',
+        backgroundColor: theme.primary,
         marginHorizontal: 16,
         marginBottom: 20,
         paddingVertical: 16,
@@ -1084,7 +1089,7 @@ export const createStyles = (theme) => StyleSheet.create({
         elevation: 3,
     },
     saveButtonText: {
-        color: '#fff',
+        color: theme.text,
         fontSize: 16,
         fontWeight: '700',
         letterSpacing: 0.5,
@@ -1119,7 +1124,7 @@ export const createStyles = (theme) => StyleSheet.create({
         marginRight: 12,
     },
     cancelButtonText: {
-        color: '#fff',
+        color: theme.text,
         fontSize: 16,
         fontWeight: '600',
     },
@@ -1149,7 +1154,7 @@ export const createStyles = (theme) => StyleSheet.create({
         marginRight: 8,
     },
     saveButtonText: {
-        color: '#fff',
+        color: theme.text,
         fontSize: 16,
         fontWeight: '600',
     },
@@ -1167,7 +1172,7 @@ export const createStyles = (theme) => StyleSheet.create({
         borderColor: 'rgba(255, 255, 255, 0.05)',
     },
     switchLabel: {
-        color: '#fff',
+        color: theme.text,
         fontSize: 15,
         fontWeight: '600',
         marginBottom: 4,
